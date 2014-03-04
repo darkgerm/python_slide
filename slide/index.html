@@ -1,0 +1,1980 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>Python Programming</title>
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <link rel="stylesheet" href="css/reveal.min.css">
+        <link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+        <!-- For syntax highlighting -->
+        <link rel="stylesheet" href="lib/css/zenburn.css">
+
+        <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+        <link rel="stylesheet" href="css/print/paper.css" type="text/css" media="print">
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+        
+        <style type="text/css">
+
+h1, h2, h3, h4, h5, h6 { text-transform: none !important; }
+
+section { text-align: left; }
+
+section h1 { text-align: center; }
+
+/* ul { font-family: Monospace !important; } */
+
+li { font-size: 30px !important; }
+
+code {
+    border-radius: 0.3em;
+    padding: 0  0.3em  2px  0.3em !important;
+    background: #777;
+    font-size: 0.8em !important;
+}
+
+.reveal pre code {
+    font-size: 23px !important;
+    max-height: 500px;
+}
+
+a {
+    font-size: 25px !important;
+}
+
+.subpage {
+    margin: 30% 0 !important;
+    text-align: center;
+}
+
+        </style>
+
+    </head>
+
+    <body>
+
+        <div class="reveal">
+
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
+
+<!-- ============================== start of slide ============================== -->
+
+<section>
+<h1>Python Programming</h1>
+
+<div style="text-align:center">
+<img src="img/python-logo.png"
+    height="200px" width="600px"
+    alt=Logo />
+</div>
+
+<hr>
+
+<p>NCTU Network Administration <font style="color:red">2014</font><p>
+<p>Created by darkgerm.</p>
+
+<a href="http://www.python.org">http://www.python.org/</a>
+
+</section>
+
+<section data-markdown>
+## Hello World
+```
+#!/usr/bin/env python3
+print('Hello World')
+```
+</section>
+
+<section data-markdown>
+## Outline
+1. Introduction
+2. Python Data Type
+3. Input and Output
+4. Syntax and Control Flows
+5. Built-in Modules
+6. 3rd Packages
+7. Examples
+</section>
+
+<section> <h2 class="subpage">1. Introduction</h2> </section>
+
+<section data-markdown>
+## Python Introduction
+- General-purpose, high-level programming language.
+- Dynamic typing, strong typing.
+- Object-oriented, imperative and functional programming styles.
+- Automatic memory management.
+- Large and comprehensive standard library.
+- 3rd package repository: PyPI (the Python Package Index)
+    - 40357 packages now.
+- `Readability` is important.
+</section>
+
+<section data-markdown>
+## Who use Python
+- Python is widely used in many domains, including:
+    - Scientific and Math. (numpy, scipy)
+    - Web programming. (Django, Pyramid)
+    - Cloud computing. (Openstack)
+    - Multimedia, animation, and graphics. (SimpleCV)
+    - Game programming. (PyGame)
+    - GUI programming. (PyQt, wxPython)
+    - Hardware/Embedded system design. (raspberryPi)
+    - Network Programming. (Twisted)
+    - System tools. (yum, many gentoo tools)
+    - ...
+
+- Heavy usage of Python at Google, Dropbox, ...
+
+</section>
+
+<section data-markdown>
+## The Zen of Python
+There should be one obvious way to do it.
+
+```text
+>>> import this
+The Zen of Python, by Tim Peters
+
+Beautiful is better than ugly.
+Explicit is better than implicit.
+Simple is better than complex.
+Complex is better than complicated.
+Flat is better than nested.
+Sparse is better than dense.
+Readability counts.
+Special cases aren't special enough to break the rules.
+Although practicality beats purity.
+Errors should never pass silently.
+Unless explicitly silenced.
+In the face of ambiguity, refuse the temptation to guess.
+There should be one-- and preferably only one --obvious way to do it.
+Although that way may not be obvious at first unless you're Dutch.
+Now is better than never.
+Although never is often better than *right* now.
+If the implementation is hard to explain, it's a bad idea.
+If the implementation is easy to explain, it may be a good idea.
+Namespaces are one honking great idea -- let's do more of those!
+```
+
+</section>
+
+<section data-markdown>
+## Python Versions
+
+- Python 2.7.6
+- Python 3.3.4
+- 2 and 3 are not compatible.
+    - 3 is now!!! We should learn 3.
+    - `2to3` can help you convert code from 2 to 3.
+
+</section>
+
+<section data-markdown>
+## Python Installation
+
+- FreeBSD
+    - with ports system:
+        - `cd /usr/ports/lang/python3`
+        - `make install clean`
+    - with pkgng:
+        - `pkg install python3`
+
+- Built-in in Modern Linux
+
+- `python --version`
+
+</section>
+
+<section data-markdown>
+## Use Python Interpreter
+```
+$ python3
+Python 3.3.2 (default, Jul  4 2013, 17:20:25)
+[GCC 4.2.1 20070831 patched [FreeBSD]] on freebsd9
+Type "help", "copyright", "credits" or "license" for more information.
+>>>
+```
+</section>
+
+
+<section data-markdown>
+## Execute the Python Script
+```
+$ cat demo.py
+#!/usr/bin/env python3
+print('Hello World!')
+
+$ python3 demo.py
+Hello World!
+
+$
+```
+</section>
+
+<section>
+<section data-markdown>
+## Python document and help functions.
+- http://docs.python.org/3/
+- In Python Interpreter !!
+
+```python
+>>> help()
+
+Welcome to Python 3.3!  This is the interactive help utility.
+
+If this is your first time using Python, you should definitely check out
+the tutorial on the Internet at http://docs.python.org/3.3/tutorial/.
+
+Enter the name of any module, keyword, or topic to get help on writing
+Python programs and using Python modules.  To quit this help utility and
+return to the interpreter, just type "quit".
+
+To get a list of available modules, keywords, or topics, type "modules",
+"keywords", or "topics".  Each module also comes with a one-line summary
+of what it does; to list the modules whose summaries contain a given word
+such as "spam", type "modules spam".
+
+help>
+```
+</section>
+
+<section data-markdown>
+## Python document and help functions.
+Example 1/3: `help()` functions.
+```python
+>>> help('if')
+The ``if`` statement
+********************
+
+The ``if`` statement is used for conditional execution:
+
+   if_stmt ::= "if" expression ":" suite
+               ( "elif" expression ":" suite )*
+               ["else" ":" suite]
+
+It selects exactly one of the suites by evaluating the expressions one
+by one until one is found to be true (see section *Boolean operations*
+for the definition of true and false); then that suite is executed
+(and no other part of the ``if`` statement is executed or evaluated).
+If all expressions are false, the suite of the ``else`` clause, if
+present, is executed.
+
+Related help topics: TRUTHVALUE
+
+```
+</section>
+<section data-markdown>
+## Python document and help functions.
+Example 2/3: `help()` functions.
+```python
+>>> help(str.split)
+Help on method_descriptor:
+
+split(...)
+    S.split(sep=None, maxsplit=-1) -> list of strings
+
+    Return a list of the words in S, using sep as the
+    delimiter string.  If maxsplit is given, at most maxsplit
+    splits are done. If sep is not specified or is None, any
+    whitespace string is a separator and empty strings are
+    removed from the result.
+
+```
+</section>
+<section data-markdown>
+## Python document and help funcions.
+Example 3/3: `dir()` functions.
+```python
+>>> dir([])
+['__add__', '__class__', '__contains__', '__delattr__', '__delitem__',
+'__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__',
+'__getitem__', '__gt__', '__hash__', '__iadd__', '__imul__', '__init__',
+'__iter__', '__le__', '__len__', '__lt__', '__mul__', '__ne__', '__new__',
+'__reduce__', '__reduce_ex__', '__repr__', '__reversed__', '__rmul__',
+'__setattr__', '__setitem__', '__sizeof__', '__str__', '__subclasshook__',
+'append', 'clear', 'copy', 'count', 'extend', 'index', 'insert', 'pop',
+'remove', 'reverse', 'sort']
+
+```
+</section>
+</section>
+
+
+
+
+
+
+<section> <h2 class="subpage">2. Python Data Type</h2> </section>
+
+<section data-markdown>
+## Built-in Data Types
+
+- Boolean Type - `bool`
+- Numeric Types - `int`, `float`, `complex`
+- Sequence Types - `list`, `tuple`
+- Text Sequence Type - `str`
+- Binary Sequence Type - `bytes`
+- Mapping Type - `dict`
+- Null Object - `None`
+- Functions - `function`
+- More Types - `bytearray`, `set`, ...
+
+----
+http://docs.python.org/3/library/stdtypes.html
+
+</section>
+
+
+<section data-markdown>
+## Boolean Type - bool
+- `True`, `False`
+- `and`, `or`, `not`
+
+----
+
+## Null Object
+- `None`
+
+</section>
+
+
+<section>
+<section data-markdown>
+## Numeric Types - int, float, complex
+- `1`, `2.17`, `3+4j`, `1e4`, `0xFF`, `0b1010`
+- Operations:
+    - `+`, `-`, `*`, `/`, `//`
+    - bitwise: `|`, `^`, `&amp;`, `&lt;&lt;`, `&gt;&gt;`
+    - power: `**`
+    - absolute: `abs()`
+    - comparisons: `&lt;`, `&gt;`, `&lt;=`, `&gt;=`, `==`, `!=`
+    - `round()`, `math.floor()`, `math.ceil()`
+- All numbers are big number.
+
+----
+http://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex
+</section>
+<section data-markdown>
+## Numeric Types - int, float, complex
+Examples 1/3
+```python
+>>> type(1)         # &lt;class 'int'&gt;
+>>> type(2.3)       # &lt;class 'float'&gt;
+>>> type(4 + 5j)    # &lt;class 'complex'&gt;
+
+>>> 1 + 2 * 3       # 7
+>>> 5 / 2           # 2.5
+>>> 5 // 2          # 2
+>>> 2 ** 31         # 2147483648
+>>> 2 ** 100        # 1267650600228229401496703205376
+>>> 2 ** 0.5        # 1.4142135623730951
+>>> abs(3 + 4j)     # 5.0
+
+>>> import math
+>>> math.e ** (math.pi * 1j)    # (-1+1.2246467991473532e-16j) ~ -1
+
+```
+</section>
+<section data-markdown>
+## Numeric Types - int, float, complex
+Examples 2/3
+```python
+# More about float
+>>> round (3.14159, 2)      # 3.14
+>>> import math
+>>> math.floor(1.5)         # 1
+>>> math.ceil(1.5)          # 2
+
+# More about bitwise
+>>> 0b101 | 0b10        # 0b111 = 7
+>>> 1 &lt;&lt; 10             # 1024
+
+# More about complex
+>>> x = 1 + 2j
+>>> x.imag          # 2.0
+>>> x.real          # 1.0
+>>> x.conjugate()   # 1 - 2j
+```
+</section>
+<section data-markdown>
+## Numeric Types - int, float, complex
+Examples 3/3
+```python
+# More about comparison
+>>> 3 &gt; 2 &gt; 1     # True
+
+>>> a = 0.1 + 0.2
+>>> b = 0.3
+>>> a == b              # False  (It's computer)
+
+>>> allowed_error = 1e-6
+>>> abs(a - b) &lt; allowed_error   # True
+
+# More about convert
+# int(x, base=10), hex(x), oct(x), bin(x)
+>>> int('3')        # 3
+>>> int('0xF', 16)  # 15
+>>> int('F', 16)    # 15
+>>> int('10', 2)    # 2
+>>> hex(254)        # '0xfe'
+>>> bin(224)        # '0b11100000'
+```
+----
+http://docs.python.org/3/library/functions.html#int
+</section>
+</section>
+
+
+
+
+
+<section>
+<section data-markdown>
+## Sequence Types - list, tuple
+- list: Mutable, `[1, 2.3, 'abc', [4, 5]]`
+- tuple: Immutable, `(255, 255, 128)`
+- Operations:
+    - `in`, `not in`
+    - extend: `+`
+    - repeat: `*`
+    - length: `len()`
+    - index: `[start:end:step]`
+    - `.append()`, `.extend()`, `.insert()`, `.sort()`
+- List Comprehension.
+
+----
+http://docs.python.org/3/library/stdtypes.html#sequence-types-list-tuple-range
+</section>
+
+<section data-markdown>
+## Sequence Types - list, tuple
+Examples 1/5
+```python
+>>> type([])        # &lt;class 'list'&gt;
+>>> type(())        # &lt;class 'tuple'&gt;
+
+# Common Sequence Operations  (list, tuple)
+>>> a = [1, 2, 3]
+>>> b = [4, 5, 6]
+>>> len(a)          # 3
+>>> a + b           # [1, 2, 3, 4, 5, 6]
+>>> [1] * 5         # [1, 1, 1, 1, 1]
+>>> 2 in a          # True
+>>> 4 in a          # False
+
+>>> c = [5, 6, 6, 7, 8]
+>>> c.count(6)      # 2
+
+```
+</section>
+<section data-markdown>
+## Sequence Types - list, tuple
+Examples 2/5
+```python
+# More about index  (list, tuple)
+>>> a = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+# index: 0  1  2  3  4  5  6  7  8  9
+#      -10 -9 -8 -7 -6 -5 -4 -3 -2 -1
+>>> a[3]            # 3
+>>> a[-1]           # 9
+>>> a[100]          # IndexError: list index out of range
+>>> a[2:4]          # [2, 3]    Different from Perl!!!
+
+>>> i = 3
+>>> a[i:i+5]        # [3, 4, 5, 6, 7]
+>>> len(a[i:i+5])   # 5
+
+>>> a[:5]           # [0, 1, 2, 3, 4]
+>>> a[6:]           # [6, 7, 8, 9]
+>>> a[::2]          # [0, 2, 4, 6, 8]
+>>> a[::-1]         # [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+```
+</section>
+<section data-markdown>
+## Sequence Types - list, tuple
+Examples 3/5
+```python
+# More about Mutable Sequence Type (list)
+>>> a = [1, 2, 3]
+>>> a.append(4)
+>>> a                   # [1, 2, 3, 4]
+>>> a.append([5])
+>>> a                   # [1, 2, 3, 4, [5]]
+>>> a.extend([6, 7])
+>>> a                   # [1, 2, 3, 4, [5], 6, 7]
+>>> a.pop()
+>>> a                   # [1, 2, 3, 4, [5], 6]
+>>> a.insert(0, 5566)
+>>> a                   # [5566, 1, 2, 3, 4, [5], 6]
+```
+</section>
+
+<section data-markdown>
+## Sequence Types - list, tuple
+Examples 4/5
+```python
+# More about Immutable Sequence Type (tuple)
+>>> hash([])        # TypeError: unhashable type: 'list'
+>>> hash(())        # 3527539
+
+# More about tuple
+>>> (x, y) = (4, 5)     # x = 4 and y = 5
+>>> x, y = 4, 5         # same
+>>> x, y = y, x         # swap
+
+# Conversion
+>>> list((1, 2, 3))     # [1, 2, 3]
+
+# Sort
+>>> a = [2, 0, 9, 3, 6, 1, 8, 4, 5, 7]
+>>> a.sort()
+>>> a
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+```
+</section>
+
+<section data-markdown>
+## Sequence Types - list, tuple
+Examples 5/5
+```python
+>>> a = [i for i in range(10)]
+>>> a
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+>>> b = [i*i for i in a]
+>>> b
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+
+>>> c = [i for i in a if i % 2 == 0]
+>>> c
+[0, 2, 4, 6, 8]
+```
+</section>
+</section>
+
+
+
+
+
+<section>
+<section data-markdown>
+## Text Sequence Type - str
+- Single quotes: `'"one" obvious way to do it.'`
+- Double quotes: `"It's true."`
+- Triple quoted: `'''multi-line string'''`, `"""same effect"""`
+- Operations:
+    - str is type of Immutable Sequence Type. Operations are the same :)
+    - `str.split()`, `str.strip()`, `str.replace()`
+    - `str.join()`
+    - `str.format()`
+    - `re` module. (Mention it later) [5. Built-in Modules](#/39)
+    - `str.encode()` (Mention it later) [Binary Sequence Type - bytes](#/18)
+----
+http://docs.python.org/3/library/stdtypes.html#text-sequence-type-str
+</section>
+
+<section data-markdown>
+## Text Sequence Type - str
+Examples 1/2
+```python
+>>> type('')            # &lt;class 'str'&gt;
+
+>>> s = 'NA is very interesting.'
+>>> 'NA' in s               # True
+>>> s[6:10]                 # 'very'
+>>> s[::-1][1:7:2].upper()  # 'GIS'
+>>> s.replace('NA', 'Network Administration')
+'Network Administration is very interesting.'
+
+>>> s.split()
+['NA', 'is', 'very', 'interesting.']
+
+>>> '  bsd  \n\n  '.strip()
+'bsd'
+
+>>> ', '.join('abc')
+'a, b, c'
+
+>>> ''.join(['a', 'b', 'c'])
+'abc'
+```
+</section>
+<section data-markdown>
+## Text Sequence Type - str
+Examples 2/2
+```python
+>>> '{0} {1} {2}'.format('a', 'b', 'c')     # 'a b c'
+>>> '{} {} {}'.format('a', 'b', 'c')        # 'a b c'
+>>> '{2} {1} {0}'.format('a', 'b', 'c')     # 'c b a'
+
+>>> 'draw a circle at ({x}, {y}) r={radius}'.format(
+...     x=3, y=4, radius=5
+... )
+'draw a circle at (3, 4) r=5'
+
+>>> 'align right "{:&gt;10}"'.format(345)
+'align right "       345"'
+
+>>> 'align center "{:-^20}"'.format('我是分隔線')
+'align center "-------我是分隔線--------"'
+
+>>> "int: {0:d};  hex: {0:x};  oct: {0:o};  bin: {0:b}".format(42)
+'int: 42;  hex: 2a;  oct: 52;  bin: 101010'
+```
+----
+http://docs.python.org/3/library/string.html#format-string-syntax
+
+http://docs.python.org/3/library/string.html#format-examples
+</section>
+</section>
+
+
+
+
+
+<section>
+<section data-markdown>
+## Binary Sequence Type - bytes
+- Single quotes: `b'"one" obvious way to do it.'`
+- Double quotes: `b"It's true."`
+- Triple quoted: `b'''multi-line bytes'''`, `b"""same effect"""`
+- `bytes` is immutable (same as `str`)
+- The differences between `bytes` and `str` are:
+    - `str` is unicode, while `bytes` is raw character array.`
+    - We can encode `str` to `bytes`.
+    - We can decode `bytes` to `str`.
+    - `str` to C++ `string`, as `bytes` to C++ `char[]`.
+
+----
+http://docs.python.org/3/library/stdtypes.html#binary-sequence-types-bytes-bytearray-memoryview
+</section>
+
+<section data-markdown>
+## Binary Sequence Type - bytes
+Examples 1/2
+```python
+>>> type(b'')           # &lt;class 'bytes'&gt;
+
+>>> b'安安你好'     # SyntaxError: bytes can only contain ASCII literal characters.
+>>> '安安你好'      # '安安你好'
+
+>>> len('大中天')           # 3
+>>> len('大中天'.encode())  # 9
+
+# encode default is UTF-8
+>>> '大中天'.encode()       # b'\xe5\xa4\xa7\xe4\xb8\xad\xe5\xa4\xa9'
+>>> '大中天'.encode('big5') # b'\xa4j\xa4\xa4\xa4\xd1'
+>>> '大中天'.encode('sjis') # b'\x91\xe5\x92\x86\x93V'
+```
+</section>
+<section data-markdown>
+## Binary Sequence Type - bytes
+Examples 2/2
+```python
+# More about encode, decode
+
+# You will receive bytes() from socket, system call, ...
+# You should tell the program how to translate it.
+>>> received = b'\x83n\x83\x8b\x83q'
+>>> print(received)
+b'\x83n\x83\x8b\x83q'
+
+>>> print(received.decode())
+UnicodeDecodeError: 'utf-8' codec cannot decode byte 0x83 in position 0: invalid start byte
+
+>>> print(received.decode('sjis'))
+ハルヒ
+```
+</section>
+</section>
+
+
+
+
+
+<section>
+<section data-markdown>
+## Mapping Type - dict
+- `key: value` pairs
+- `{ 'name': 'Yotsuba', 'age': 5, 'hair-color': 'green'}`
+- Operations:
+    - length: `len()`
+    - get value: `d[key]`, `d.get(key[, default])`
+    - delete key: `del d[key]`
+    - find: `key in d`, `key not in d`
+    - `d.keys()`, `d.values()`, `d.items()`
+----
+http://docs.python.org/3/library/stdtypes.html#mapping-types-dict
+</section>
+
+<section data-markdown>
+## Mapping Type - dict
+Examples 1/2
+```python
+>>> type({})            # &lt;class 'dict'&gt;
+
+>>> d = { 'name': 'Yotsuba', 'age': 5, 'hair-color': 'green'}
+>>> len(d)              # 3, means 3 items.
+>>> d['name']           # 'Yotsuba'
+>>> d['height']         # KeyError: 'height'
+>>> d['height'] = 107
+>>> d
+{'hair-color': 'green', 'name': 'Yotsuba', 'age': 5, 'height': 107}
+
+>>> 'age' in d      # True
+>>> del d['age']
+>>> d
+{'hair-color': 'green', 'name': 'Yotsuba', 'height': 107}
+```
+</section>
+<section data-markdown>
+## Mapping Type - dict
+Examples 2/2
+```python
+>>> d = { 'name': 'Yotsuba', 'age': 5, 'hair-color': 'green'}
+>>> d.keys()
+dict_keys(['hair-color', 'name', 'height'])
+
+>>> d.values()
+dict_values(['green', 'Yotsuba', 107])
+
+>>> d.items()
+dict_items([('hair-color', 'green'), ('name', 'Yotsuba'), ('height', 107)])
+
+>>> for key, value in d:
+...     print('key = {:&lt;10}, value = {:&lt;10}'.format(key, value))
+...
+key = hair-color, value = green
+key = name      , value = Yotsuba
+key = height    , value = 107
+```
+</section>
+</section>
+
+<section data-markdown>
+## Functions
+- Mention it later!
+    - [4. Syntax and Control Flows](#/33)
+</section>
+
+
+
+
+
+
+
+<section> <h2 class="subpage">3. Input and Output</h2> </section>
+
+<section data-markdown>
+## Input and Output
+- Standard I/O - `print()`, `input()`
+- File I/O - `open()`
+
+----
+http://docs.python.org/3/tutorial/inputoutput.html
+
+</section>
+
+<section>
+<section data-markdown>
+## Standard I/O - print(), input()
+Example: `print()`
+```python
+>>>> print('hello', 'world')
+hello world
+
+>>> print('hello', 'world', sep=', ')
+hello, world
+
+>>> print('hello', 'world', sep=', ', end='$$$\n')
+hello, world$$$
+
+>>> print([1, 2, 3])        # convert to string using str()
+[1, 2, 3]
+
+>>> import sys
+>>> print('This line will be printed to stderr.', file=sys.stderr)
+This line will be printed to stderr.
+```
+----
+http://docs.python.org/3/library/functions.html#print
+</section>
+
+<section data-markdown>
+## Standard I/O - print(), input()
+Example: `input()`
+```python
+>>> name = input('What is your name: ')
+What is your name: darkgerm
+
+>>> print('your name is', name)
+your name is darkgerm
+
+```
+----
+http://docs.python.org/3/library/functions.html#input
+</section>
+</section>
+
+
+<section>
+<section data-markdown>
+## File I/O - open()
+Example: open a file for read.
+```python
+>>> f = open('/etc/resolv.conf')
+>>> print(f.read())
+search cs.nctu.edu.tw
+nameserver 140.113.235.103
+nameserver 8.8.8.8
+nameserver 140.113.1.1
+
+>>> open('/etc/resolv.conf', 'r').readlines()
+['search cs.nctu.edu.tw\n', 'nameserver 140.113.235.103\n',
+'nameserver 8.8.8.8\n', 'nameserver 140.113.1.1\n']
+
+>>> f = open('/etc/resolv.conf', 'rb')
+>>> f.read(6)
+b'search'
+
+>>> f.close()
+```
+----
+http://docs.python.org/3/library/functions.html#open
+</section>
+
+<section data-markdown>
+## File I/O - open()
+Example: open a file for write.
+```python
+>>> f = open('/etc/hosts.allow', 'w')
+>>> f.write('ALL : ALL : deny')
+>>> f.close()
+
+>>> open('/etc/hosts.allow').read()
+ALL : ALL : deny
+```
+</section>
+</section>
+
+
+
+
+<section> <h2 class="subpage">4. Syntax and Control Flows</h2> </section>
+
+<section data-markdown>
+## Python Syntax 1/2
+- Use `#` for inline comments.
+- Use multi-line string for block comments.
+    - `'''This is a comment'''`
+    - `"""Me too"""`
+
+```python
+# I am a comment.
+def add(a, b):
+    """add two number."""
+    return a + b
+```
+----
+http://legacy.python.org/dev/peps/pep-0008/#comments
+</section>
+
+<section data-markdown>
+## Python Syntax 2/2
+- Use `indentation` to delimit program blocks.
+    - `tab`, `any number of spaces`are OK, but only use one in a file.
+    - Suggestion: `4 spaces` (PEP8)
+
+```python
+def fibonacci(n):
+    if n &lt;= 2:
+        return 1
+    else:
+        return fibonacci(n-1) + fibonacci(n-2)
+```
+----
+http://en.wikipedia.org/wiki/Python_syntax_and_semantics#Indentation
+
+[PEP8: http://legacy.python.org/dev/peps/pep-0008/](http://legacy.python.org/dev/peps/pep-0008/)
+</section>
+
+
+<section data-markdown>
+## Control Flows
+- `if` statement
+- `for` statement
+- `while` statement
+- `def` statement (functions)
+- More control flows:
+    - `try`, `except`, `raise` statements
+    - `with` statement
+    - `lambda` expression
+    - ...
+
+----
+http://docs.python.org/3/tutorial/controlflow.html
+
+http://docs.python.org/3/reference/compound_stmts.html
+</section>
+
+<section data-markdown>
+## `if` statement
+`if`, `elif`, `else`
+```python
+>>> x = int(input("Please enter an integer: "))
+Please enter an integer: 42
+>>> if x &lt; 0:
+...     x = 0
+...     print('Negative changed to zero')
+... elif x == 0:
+...     print('Zero')
+... elif x == 1:
+...     print('Single')
+... else:
+...     print('More')
+...
+More
+```
+----
+http://docs.python.org/3/reference/compound_stmts.html#the-if-statement
+</section>
+
+<section data-markdown>
+## `for` statement 1/2
+`for` var `in` iterable_object`:` statement
+```python
+for animal in ['cat', 'dog', 'fish', 'bird']:
+    print(animal)
+
+'''output:
+cat
+dog
+fish
+bird
+'''
+
+for char in 'abcd':
+    print(char, end=' ')
+print()
+
+'''output:
+a b c d
+'''
+```
+----
+http://docs.python.org/3/reference/compound_stmts.html#for
+</section>
+
+<section data-markdown>
+## `for` statement
+Useful function for iteration: `range()`
+```python
+'''
+range(stop)
+range(start, stop[, step])
+'''
+square_numbers = []
+for i in range(10):
+    square_numbers.append(i*i)
+
+print(square_numbers)   # [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+
+
+odd_numbers = []
+for i in range(1, 12, 2):
+    odd_numbers += [i]
+
+print(odd_numbers)      # [1, 3, 5, 7, 9, 11]
+```
+----
+http://docs.python.org/3/library/functions.html#func-range
+</section>
+
+<section data-markdown>
+## `while` statement
+`while` condition`:` statement
+```python
+#!/usr/bin/env python3
+''' 3n+1 Problem '''
+step = 0
+n = int(input('give me a number: '))
+
+while n != 1:
+    if n % 2 == 0:  n //= 2
+    else:           n = 3 * n + 1
+    step += 1
+
+print('{} steps to 1.'.format(step))
+
+'''sample run
+$ python3 3n+1.py
+give me a number: 10
+6 steps to 1.
+'''
+```
+----
+http://docs.python.org/3/reference/compound_stmts.html#while
+</section>
+
+<section data-markdown>
+## `def` statement (functions) 1/2
+`def` function_name `(` argument_list `)` `:`
+```python
+#!/usr/bin/env python3
+""" fibonacci """
+def fib(n):
+    a, b = 1, 1
+    for i in range(n-2):
+        a, b = b, a+b
+    return b
+
+while True:
+    print(fib(int(input('n = '))))
+
+"""sample run
+n = 10
+55
+'''
+```
+----
+http://docs.python.org/3/tutorial/controlflow.html#defining-functions
+
+http://docs.python.org/3/reference/compound_stmts.html#def
+</section>
+
+<section data-markdown>
+## `def` statement (functions) 2/2
+functions are objects.
+```python
+#!/usr/bin/env python3
+rng = range             # alias of built-in function range()
+
+def print_pow_of_2(n):
+    for i in rng(n):
+        print(2**i, end=' ')
+    print()
+
+ppo2 = print_pow_of_2
+# ppo2 and print_pow_of_2 are the same function
+
+ppo2(10)                # 1 2 4 8 16 32 64 128 256 512
+print_pow_of_2(10)      # 1 2 4 8 16 32 64 128 256 512
+
+print(type(ppo2))       # &lt;class 'function'&gt;
+
+print(ppo2 == print_pow_of_2)   # True
+
+```
+</section>
+
+
+
+
+
+
+
+<section> <h2 class="subpage">5. Built-in Modules</h2> </section>
+
+<section data-markdown>
+## The Python Standard Library
+- Python’s standard library is very extensive.
+    - Regular Expression. (`re`)
+    - Date and Time. (`datetime`)
+    - Data Structure. (`heapq`)
+    - Filesystem. (`os.path`, `stat`, `glob`)
+    - Database. (`sqlite3`)
+    - Compression and Archiving. (`zlib`, `gzip`, `zipfile`)
+    - Concurrent Execution. (`threading`, `subprocess`)
+    - Networking. (`socket`, `ssl`)
+    - Internet Protocols. (`http`, `urllib`, `telnetlib`, `smtpd`)
+    - Multimedia. (`audioop`, `wave`)
+    - ...
+</section>
+
+<section data-markdown>
+## The Python Standard Library
+- It's impossible to introduce them all.
+- Here I will introduce the following common modules.
+    - Regular Expression. (`re`)
+    - System call. (`subprocess`)
+    - HTTP. (`urllib`)
+    - Socket Programming. (`socket`)
+    - Other modules. (`os`, `sys`)
+
+----
+http://docs.python.org/3/library/index.html
+</section>
+
+<section data-markdown>
+## How to use modules?
+Use `import` statement.
+```python
+# import a module
+import math
+print('pi =', math.pi)                  # 3.141592653589793
+print('log10(2) =', math.log10(2))      # 0.3010299956639812
+
+# only import a function/class/variable
+from itertools import combinations
+print(list(combinations('ABC', 2)))
+# [('A', 'B'), ('A', 'C'), ('B', 'C')]
+
+# import a module and make an alias
+import random as rnd
+rnd.randint(0, 10)          # 8  (or a random number in [0, 10])
+
+# import a function/class/variable and make an alias
+from datetime import date as dt
+print(dt.today())           # 2014-03-02
+
+```
+</section>
+
+
+<section>
+<section data-markdown>
+## Regular Expression (`re`)
+- Provide regular expression matching operations similar to those found in Perl.
+- Match the string at any location: `re.search()`
+- Split the string by pattern: `re.split()`
+- Find all the matched pattern: `re.findall()`
+
+----
+http://docs.python.org/3/library/re.html
+
+http://docs.python.org/3/howto/regex.html#regex-howto
+</section>
+
+<section data-markdown>
+## Regular Expression (`re`)
+`re.search()` Example
+```python
+import re
+''' re.search(pattern, string) '''
+
+string = 'Sun Mar  2 21:33:29 CST 2014'
+
+r = re.search('\d+:\d+:\d+', string)
+print('{}-{} matched: {}'.format(r.start(), r.end(), r.group()))
+# 11-19 matched: 21:33:29
+
+r = re.search('(\d+):(\d+):(\d+)', string)
+print('hour = {}  minute = {}  second = {}'.format(
+    r.group(1), r.group(2), r.group(3)
+))
+# hour = 21  minute = 33  second = 29
+```
+</section>
+<section data-markdown>
+## Regular Expression (`re`)
+`re.split()`, `re.findall()` Example
+```python
+>>> import re
+
+>>> re.split('[: ]', 'Sun Mar  2 21:23:09 CST 2014')
+['Sun', 'Mar', '', '2', '21', '23', '09', 'CST', '2014']
+
+>>> re.findall('\w+', 'regexp is very important')
+['regexp', 'is', 'very', 'important']
+
+>>> re.findall('\w+s', 'raining cats and dogs')
+['cats', 'dogs']
+```
+</section>
+</section>
+
+
+
+<section>
+<section data-markdown>
+## System call. (`subprocess`)
+- `subprocess` allows you to spawn new processes, connect to their
+input/output/error pipes, and obtain their return codes.
+
+- `subprocess.call()`
+- `subprocess.check_output()`
+- `subprocess.Popen`
+
+----
+http://docs.python.org/3/library/subprocess.html
+</section>
+
+<section data-markdown>
+## System call. (`subprocess`)
+`subprocess.call()` Example
+```python
+#!/usr/bin/env python3
+from subprocess import call
+
+# call() is just like system() in C.
+return_code = call('ls')        # 0
+
+# The output will display on screen, but you can't get it.
+# To get the output,
+# you should use the more powerful one: check_output()
+```
+----
+http://docs.python.org/3/library/subprocess.html#subprocess.call
+</section>
+<section data-markdown>
+## System call. (`subprocess`)
+`subprocess.check_output()` Example
+```python
+#!/usr/bin/env python3
+from subprocess import check_output
+
+# check_output() is just like backquote in Perl
+stdout = check_output(['ls', '-al'])
+
+# or convenient way (but not safe)
+stdout = check_output('ls -al', shell=True)
+
+# You can't get stderr and can't give the stdin.
+# If you want to get control of stderr and stdin,
+# you should use the more powerful one: Popen()
+```
+----
+http://docs.python.org/3/library/subprocess.html#subprocess.check_output
+</section>
+<section data-markdown>
+## System call. (`subprocess`)
+`subprocess.Popen` Example 1/2
+```python
+#!/usr/bin/env python3
+import subprocess as sp
+
+# Popen is the most powerful one.
+
+# Example 1: execute `base64 -d` with stdin 'cHl0aG9uCg=='
+
+process = sp.Popen(
+    ['base64', '-d'],
+    stdin=sp.PIPE,
+    stdout=sp.PIPE
+)
+stdout = process.communicate(input=b'cHl0aG9uCg==')[0]
+# stdout = b'python\n'
+
+```
+----
+http://docs.python.org/3/library/subprocess.html#popen-constructor
+</section>
+<section data-markdown>
+## System call. (`subprocess`)
+`subprocess.Popen` Example 2/2
+```python
+#!/usr/bin/env python3
+import subprocess as sp
+import shlex
+
+# Example 2: execute `/sbin/pfctl -t ssh_bruteforce -T show`
+
+cmd = shlex.split('/sbin/pfctl -t ssh_bruteforce -T show')
+# shlex.split() help you to split in shell way.
+# cmd = ['/sbin/pfctl', '-t', 'ssh_bruteforce', '-T', 'show']
+
+process = sp.Popen(cmd, stdout=sp.PIPE, stderr=sp.PIPE)
+
+stdout, stderr = process.communicate()
+# stdout = (many ips)
+# stderr = b'No ALTQ support in kernel\nALTQ related functions disabled\n'
+```
+</section>
+</section>
+
+
+
+
+<section>
+<section data-markdown>
+## HTTP. (`urllib`)
+- `urllib` is a package, collects 4 modules.
+    - `urllib.request`, `urllib.error`, `urllib.parse`, `urllib.robotparser`
+- `urllib.request` defines functions and classes which help in opening URLs.
+    - `urllib.request.urlopen()`
+- `urllib.parse` defines a standard interface to manipulate URL
+(Uniform Resource Locator)
+    - Parsing URL: `urllib.parse.urlparse()`
+    - Parsing query string: `urllib.parse.parse_qs()`
+    - String conversion: `urllib.parse.quote()`
+----
+http://docs.python.org/3/library/urllib.request.html#module-urllib.request
+
+http://docs.python.org/3/library/urllib.parse.html#module-urllib.parse
+</section>
+
+<section data-markdown>
+## HTTP. (`urllib`)
+`urllib.request.urlopen()` Example
+```python
+#!/usr/bin/env python3
+""" get the google homepage. """
+from urllib.request import urlopen
+
+response = urlopen('http://www.google.com')
+
+print(response.code)        # 200
+print(response.msg)         # OK
+print(response.headers)     # (the HTTP headers)
+print(response.read())      # (the HTTP content)
+```
+----
+http://docs.python.org/3/library/urllib.request.html#urllib.request.urlopen
+</section>
+<section data-markdown>
+## HTTP. (`urllib`)
+`urllib.parse.quote()` Example
+```python
+#!/usr/bin/env python3
+""" 取得 wiki "銀河系" 頁面 """
+from urllib.reqeust import urlopen
+from urllib.parse import quote
+
+url = 'http://zh.wikipedia.org/wiki/'
+keyword = '銀河系'
+
+# urlopen(url + keyword)
+# This will raise UnicodeEncodeError.
+# Because '銀河系' is not valid ascii codes.
+
+keyword_quote = quote(keyword)              # %E9%8A%80%E6%B2%B3%E7%B3%BB
+response = urlopen(url + keyword_quote)     # success
+
+open('result.html', 'w').write(response.read())
+```
+----
+http://docs.python.org/3/library/urllib.parse.html#urllib.parse.quote
+</section>
+</section>
+
+
+
+
+
+<section>
+<section data-markdown>
+## Socket Programming. (`socket`)
+- `socket` module provides access to the BSD socket interface.
+- It is available on all modern Unix systems, Windows, MacOS, ...
+
+- Common use:
+    - Open a socket: `socket.socket()`
+    - Connect the socket to (host, port): `socket.connect()`
+    - Bind the socket to (host, port): `socket.bind()`
+    - Listen the socket: `socket.listen()`
+    - Accept a connection: `socket.accept()`
+    - Receive/Send data from the socket: `socket.recv()`, `socket.sendall()`
+
+----
+http://docs.python.org/3/library/socket.html
+
+http://docs.python.org/3/howto/sockets.html#socket-howto
+
+</section>
+<section data-markdown>
+## Socket Programming. (`socket`)
+Example (Echo server program)
+```python
+# Echo server program
+import socket
+
+HOST = ''                 # Symbolic name meaning all available interfaces
+PORT = 50007              # Arbitrary non-privileged port
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.bind((HOST, PORT))
+s.listen(1)
+conn, addr = s.accept()
+print('Connected by', addr)
+while True:
+    data = conn.recv(1024)
+    if not data: break
+    conn.sendall(data)
+conn.close()
+```
+----
+http://docs.python.org/3/library/socket.html#example
+</section>
+<section data-markdown>
+## Socket Programming. (`socket`)
+Example (Echo client program)
+```python
+# Echo client program
+import socket
+
+HOST = 'daring.cwi.nl'    # The remote host
+PORT = 50007              # The same port as used by the server
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.connect((HOST, PORT))
+s.sendall(b'Hello, world')
+data = s.recv(1024)
+s.close()
+print('Received', repr(data))
+```
+----
+http://docs.python.org/3/library/socket.html#example
+</section>
+</section>
+
+
+
+
+
+<section>
+<section data-markdown>
+## Other modules. (`os`, `sys`)
+- `os` module provides a portable way of using operation system dependent
+functionality.
+    - You can find lots of unix system calls here.
+    - `os.getuid()`, `os.getpid()`, `os.kill()`, ...
+
+- `sys` module provides access to some variables used or maintained by the
+interpreter.
+    - You can get the command line arguments passed to the script.
+    - You can get the File object of stdin, stdout, stderr.
+    - `sys.argv`, `sys.path`, ...
+
+----
+http://docs.python.org/3/library/os.html
+
+http://docs.python.org/3/library/sys.html
+</section>
+
+<section data-markdown>
+## Other modules. (`os`, `sys`)
+Example
+```python
+#!/usr/bin/env python3
+# run this script by 'python3 demo.py arg1 asdf'
+import os, sys
+
+print(os.name)      # 'posix'
+print(os.getuid())  # 14822
+print(os.getpid())  # 10215
+print(os.uname())
+# posix.uname_result(sysname='FreeBSD', nodename='bsd5.cs.nctu.edu.tw', release='9.1-RELEASE-p10',
+# version='FreeBSD 9.1-RELEASE-p10 #0: Sun Jan 12 20:11:23 UTC 2014  
+# root@amd64-builder.daemonology.net:/usr/obj/usr/src/sys/GENERIC', machine='amd64')
+
+print(sys.argv)     # ['demo.py', 'arg1', 'adsf']
+print(sys.path)
+# ['/amd/cs/99/9917038', '/usr/local/lib/python33.zip',
+# '/usr/local/lib/python3.3', '/usr/local/lib/python3.3/plat-freebsd9',
+# '/usr/local/lib/python3.3/lib-dynload', '/usr/local/lib/python3.3/site-packages']
+```
+</section>
+</section>
+
+
+
+
+
+<section> <h2 class="subpage">6. 3rd Packages</h2> </section>
+
+<section data-markdown>
+## PyPI - the Python Package Index
+- https://pypi.python.org/pypi
+- Use `pip` to install packages.
+- Import it and use!
+</section>
+
+<section data-markdown>
+## Other packages
+- Download from it's website and follow its install instructions.
+- Example: `BeautifulSoup`
+
+```shell
+# Download it from its website.
+$ wget http://www.crummy.com/software/BeautifulSoup/bs4/download/4.3/beautifulsoup4-4.3.2.tar.gz
+
+# untar it
+$ tar zxvf beautifulsoup4-4.3.2.tar.gz
+
+# Run `2to3` to make it compatible with Python3.
+$ cd beautifulsoup4-4.3.2
+$ 2to3 -w bs4
+```
+----
+http://www.crummy.com/software/BeautifulSoup/
+</section>
+
+
+
+<section> <h2 class="subpage">7. Examples</h2> </section>
+
+<section data-markdown>
+## Examples
+- `id.py`
+    - control flows, functions, string, array, type conversion
+- `latency.py`
+    - system command, re
+- `myip.py`
+    - http request, re
+- `parser.py`
+    - file, re, dict
+- `split.py`
+    - file, string
+- `youtube.py`
+    - http request, re, argument parse, 3rd package
+</section>
+
+<section>
+<section data-markdown>
+## id.py
+Code 1/3
+```python
+#!/usr/bin/env python3
+"""Check the input is a valid id or not."""
+import re
+
+table = dict(
+    A=10, J=18, S=26,
+    B=11, K=19, T=27,
+    C=12, L=20, U=28,
+    D=13, M=21, V=29,
+    E=14, N=22, W=32,
+    F=15, O=35, X=30,
+    G=16, P=23, Y=31,
+    H=17, Q=24, Z=33,
+    I=34, R=25,
+)
+```
+</section>
+<section data-markdown>
+## id.py
+Code 2/3
+```python
+def check(id_):
+    digit = table[id_[0]]
+    cks = digit // 10 + digit % 10 * 9
+    cks += sum(int(id_[i]) * (9-i) for i in range(1, 9))
+    cks += int(id_[9])
+    return cks % 10 == 0
+
+# Alternative check.
+def check2(id_):
+    cks = int('10987654932210898765431320'[ord(id_[0]) - ord('A')])
+    cks += sum(int(id_[i]) * (9-i) for i in range(1, 9))
+    cks += int(id_[9])
+    return cks % 10 == 0
+```
+</section>
+<section data-markdown>
+## id.py
+Code 3/3
+```python
+if __name__ == '__main__':
+    while True:
+        id_ = input('please input id: ')
+
+        if not re.search('^[A-Z]\d{9}$', id_):
+            print('wrong format!')
+
+        elif check(id_):
+            print('valid')
+
+        else:
+            print('invalid')
+```
+Sample Run
+```shell
+$ python3 id.py
+please input id: A123456789
+valid
+please input id: XDD
+wrong format!
+```
+</section>
+</section>
+
+
+<section>
+<section data-markdown>
+## latency.py
+Code 1/1
+```python
+#!/usr/bin/env python3
+import re
+import subprocess as sp
+
+cmd = 'ping -c 5 linux1.cs.nctu.edu.tw | tail -n +2 | head -n 5'
+
+ping_rst_bytes = sp.check_output(cmd, shell=True)
+ping_rst = ping_rst_bytes.decode()
+
+times = []
+for line in ping_rst.split('\n'):
+    reobj = re.search('time=(\d*\.\d*) ms', line)
+    if reobj:
+        times.append(float(reobj.group(1)))
+
+print('sum = {:.3f} ms'.format(sum(times)))
+print('max = {:.3f} ms'.format(max(times)))
+print('min = {:.3f} ms'.format(min(times)))
+```
+</section>
+<section data-markdown>
+## latency.py
+Sample Run
+```shell
+$ python3 latency.py
+sum = 1.008 ms
+max = 0.258 ms
+min = 0.177 ms
+```
+</section>
+</section>
+
+
+<section data-markdown>
+## myip.py
+Code 1/1
+```python
+#!/usr/bin/env python3
+import re
+from urllib.request import urlopen
+
+url = 'https://www.esolutions.se/whatsmyinfo'
+pattern = '&lt;div class="col-md-8"&gt;(\d+\.\d+\.\d+\.\d+)&lt;/div&gt;'
+
+content = urlopen(url).read().decode()
+reobj = re.search(pattern, content)
+if reobj:
+    print('my ip: {}'.format(reobj.group(1)))
+else:
+    print('cannot find your ip QQ.')
+
+```
+Sample Run
+```shell
+$ python3 myip.py
+my ip: 140.113.235.135
+```
+</section>
+
+
+<section>
+<section data-markdown>
+## parser.py
+Code 1/1
+```python
+#!/usr/bin/env python3
+import re
+
+table = {}
+
+#Dec 21 17:07:08 nat235 pure-ftpd: (?@192.168.0.15) [INFO] ioi32 is now logged in
+for line in open('xferlog', errors='ignore'):
+    if 'logged' not in line: continue
+
+    cols = line.split(' ')
+    ip, user = cols[5][3:-1], cols[7]
+
+    if ip not in table:         table[ip] = [user]
+    elif user not in table[ip]: table[ip] += [user]
+    else:                       pass        # do not add again
+
+for key, value in sorted(table.items()):
+    print('{:20s} {}'.format(key, value))
+```
+</section>
+<section data-markdown>
+## parser.py
+Sample Run
+```shell
+$ python3 parser.py
+192.168.1.103        ['ioi23']
+192.168.1.193        ['ioi16']
+192.168.1.210        ['ioi28']
+```
+</section>
+</section>
+
+
+<section>
+<section data-markdown>
+## split.py
+Code 1/1
+```python
+#!/usr/bin/env python3
+
+pass_f = open('/etc/passwd')
+
+for line in pass_f:
+    if line.strip()[0] == '#': continue
+    arr = line.split(':')
+    if len(arr) &lt; 2: continue
+    print('username = {:<10} uid = {}'.format(arr[0], arr[2]))
+
+pass_f.close()
+```
+</section>
+<section data-markdown>
+## split.py
+Sample Run
+```shell
+$ python3 split.py
+username = root       uid = 0
+username = toor       uid = 0
+username = daemon     uid = 1
+username = operator   uid = 2
+username = bin        uid = 3
+username = tty        uid = 4
+username = kmem       uid = 5
+username = games      uid = 7
+username = news       uid = 8
+username = man        uid = 9
+username = sshd       uid = 22
+username = smmsp      uid = 25
+username = mailnull   uid = 26
+username = bind       uid = 53
+username = proxy      uid = 62
+username = _pflogd    uid = 64
+username = _dhcp      uid = 65
+username = uucp       uid = 66
+username = pop        uid = 68
+username = www        uid = 80
+username = hast       uid = 845
+username = nobody     uid = 65534
+username = messagebus uid = 556
+username = polkit     uid = 562
+username = haldaemon  uid = 560
+username = avahi      uid = 558
+username = bitlbee    uid = 914
+username = git_daemon uid = 964
+username = +          uid =
+```
+</section>
+</section>
+
+
+
+<section>
+<section data-markdown>
+## youtube.py
+Code 1/4
+```python
+#!/usr/bin/env python3
+import os
+import re
+import sys
+from urllib.request import urlopen
+from urllib.parse import quote
+
+sys.path.append(os.path.abspath('./beautifulsoup4-4.3.2'))
+from bs4 import BeautifulSoup
+
+```
+</section>
+<section data-markdown>
+## youtube.py
+Code 2/4
+```python
+def youtube_search(keyword, n=6):
+    url_fmt = (
+        'http://www.youtube.com/results'
+        '?hl=en&amp;search_query={}'
+    )
+    url = url_fmt.format(quote(keyword))
+
+    content = urlopen(url).read().decode()
+    html = BeautifulSoup(content)
+
+    base = 'http://www.youtube.com'
+    for link in html.find_all(href=re.compile("watch\?v=")):
+        if 'Watch Later' not in str(link):
+            print(base + link.get('href'))
+            print(link.text.strip())
+            print()
+            n -= 1
+            if n == 0: break
+```
+</section>
+<section data-markdown>
+## youtube.py
+Code 3/4
+```python
+def main1():
+    import getopt
+
+    def usage():
+        print('Usage: %s [-n N] keyword.' % sys.argv[0])
+        exit(1)
+
+    try:
+        opts, args = getopt.getopt(sys.argv[1:], 'n:')
+
+    except getopt.GetoptError as err:
+        usage()
+
+    if len(args) != 1: usage()
+
+    n = 6
+    for opt, arg in opts:
+        if opt == '-n': n = int(arg)
+
+    youtube_search(args[0], n=n)
+```
+</section>
+<section data-markdown>
+## youtube.py
+Code 4/4
+```python
+def main2():
+    import argparse
+    parser = argparse.ArgumentParser(
+            description='Youtube search engine.'
+    )
+    parser.add_argument('-n', type=int, default=6,
+            help='number of search result. default is 6.')
+    parser.add_argument(
+            'keyword', nargs=1,
+            help='keyword to search.'
+    )
+    args = parser.parse_args()
+
+    youtube_search(args.keyword[0], n=args.n)
+
+
+if __name__ == '__main__':
+    main2()
+```
+</section>
+<section data-markdown>
+## youtube.py
+Sample Run 1/2
+```shell
+$ python3 youtube.py -h
+usage: youtube.py [-h] [-n N] keyword
+
+Youtube search engine.
+
+positional arguments:
+  keyword     keyword to search.
+
+optional arguments:
+  -h, --help  show this help message and exit
+  -n N        number of search result. default is 6.
+```
+</section>
+<section data-markdown>
+## youtube.py
+Sample Run 2/2
+```shell
+$ python3 youtube.py 五五六六
+http://www.youtube.com/watch?v=2NqXSYfL3as
+『56不能亡！』5566金曲2小時終極串燒！
+
+http://www.youtube.com/watch?v=wfezg0ThJyo
+5566-56不能亡最強串燒金曲
+
+http://www.youtube.com/watch?v=ixt-rNDkpTU
+5566 串燒歌曲 你們還記得嗎?
+
+http://www.youtube.com/watch?v=2Ii0kpKi8kI
+5566【MVP情人】我難過 MV
+
+http://www.youtube.com/watch?v=tb9jik2cwes
+20140101 TVBS 五月天vs.5566 高雄合體開唱
+
+http://www.youtube.com/watch?v=Hqty0e-KiPE
+5566 - 存在
+```
+</section>
+</section>
+
+
+
+
+<section> <h2 class="subpage">The course is going to end here.</h2> </section>
+<section> <h2 class="subpage">However, things in this course are only 10% of Python.</h2></section>
+<section> <h2 class="subpage">Oops, maybe 5% or less.</h2></section>
+<section data-markdown>
+## What's more you can learn first
+- `class`
+- `lambda`
+- Generators, `yield` statement.
+- Exceptions, `try` and `except` statements.
+- `set` type.
+- `json` module.
+- Write your own module.
+- Docstring.
+- Syntax suggestion: PEP8
+- Binding with C: `ctypes` module, `&lt;Python.h&gt;`
+</section>
+<section data-markdown>
+## What's more and more you can learn
+- For Development: `virtualenv`
+- For GUI: `PySide`, `wxPython`
+- For 3D Graph: `VPython`
+- For Image Manipulate: `SimpleCV`
+- For Website Design: `Django`, `jinja2`, `Flask`, `web2py`
+- For Scientific Calculation: `SciPy`, `NumPy`, `metaplot2`
+- For Network Programming: `Twisted`
+- For Documentation: `sphinx`
+</section>
+<section> <h2 class="subpage">Welcome to Python World !</h2> </section>
+
+
+<section data-markdown>
+## Learning Materials and References
+
+- [The Python Tutorial](http://docs.python.org/3/tutorial/index.html)
+- [Python Standard Library](http://docs.python.org/3/library/subprocess.html)
+- [良葛格學習筆記](http://openhome.cc/Gossip/Python/)
+
+</section>
+
+<!-- ============================== end of slide ============================== -->
+
+            </div>
+
+        </div>
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.min.js"></script>
+
+        <script>
+
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: false,
+                margin: 0.1,
+
+                theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+                transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+                // Parallax scrolling
+                // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+                // parallaxBackgroundSize: '2100px 900px',
+
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                    { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                ]
+            });
+
+        </script>
+
+    </body>
+</html>
