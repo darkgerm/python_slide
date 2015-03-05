@@ -81,7 +81,7 @@ a {
 
 <hr>
 
-<p>NCTU Network Administration <font style="color:red">2014</font><p>
+<p>NCTU Network Administration <font style="color:red">2015</font><p>
 <p>Created by darkgerm.</p>
 
 <a href="http://www.python.org">http://www.python.org/</a>
@@ -98,13 +98,19 @@ print('Hello World')
 
 <section data-markdown>
 ## Outline
-1. Introduction
-2. Python Data Type
-3. Input and Output
-4. Syntax and Control Flows
-5. Built-in Modules
-6. 3rd Packages
-7. Examples
+[1. Introduction](#/3)
+
+[2. Python Data Type](#/12)
+
+[3. Input and Output](#/21)
+
+[4. Syntax and Control Flows](#/25)
+
+[5. Built-in Modules](#/35)
+
+[6. 3rd Packages](#/44)
+
+[7. Examples](#/47)
 </section>
 
 <section> <h2 class="subpage">1. Introduction</h2> </section>
@@ -125,7 +131,7 @@ print('Hello World')
 ## Who use Python
 - Python is widely used in many domains, including:
     - Scientific and Math. (numpy, scipy)
-    - Web programming. (Django, Pyramid)
+    - Web programming. (Django, Pyramid, Flask)
     - Cloud computing. (Openstack)
     - Multimedia, animation, and graphics. (SimpleCV)
     - Game programming. (PyGame)
@@ -173,12 +179,18 @@ Namespaces are one honking great idea -- let's do more of those!
 <section data-markdown>
 ## Python Versions
 
-- Python 2.7.6
-- Python 3.3.4
-- 2 and 3 are not compatible.
-    - 3 is now!!! We should learn 3.
+- Python 2.7.9 (2014-12-10 Release)
+- Python 3.4.3 (2015-02-25 Release)
+- 2 and 3 are **not** compatible.
+    - Python 2.x is legacy, Python 3.x is the present and future of the language.
     - `2to3` can help you convert code from 2 to 3.
 
+- Check your python version:
+    - `python --version`
+    - `python3 --version`
+
+----
+https://wiki.python.org/moin/Python2orPython3
 </section>
 
 <section data-markdown>
@@ -186,14 +198,17 @@ Namespaces are one honking great idea -- let's do more of those!
 
 - FreeBSD
     - with ports system:
-        - `cd /usr/ports/lang/python3`
-        - `make install clean`
+        - `cd /usr/ports/lang/python3 &amp;&amp; make install clean`
     - with pkgng:
         - `pkg install python3`
-
-- Built-in in Modern Linux
-
-- `python --version`
+- Linux
+    - Arch Linux: `pacman -S python3`
+    - Debian(Ubuntu, Mint, ...): `apt-get install python3`
+    - Fedora: `yum install python3`
+- Build from source: https://hg.python.org/cpython/
+    - `hg clone https://hg.python.org/cpython`
+    - `./con`
+    - `make`
 
 </section>
 
@@ -201,8 +216,8 @@ Namespaces are one honking great idea -- let's do more of those!
 ## Use Python Interpreter
 ```
 $ python3
-Python 3.3.2 (default, Jul  4 2013, 17:20:25)
-[GCC 4.2.1 20070831 patched [FreeBSD]] on freebsd9
+Python 3.4.2 (default, Feb  8 2015, 20:11:44)
+[GCC 4.2.1 Compatible FreeBSD Clang 3.4.1 (tags/RELEASE_34/dot1-final 208032)] on freebsd10
 Type "help", "copyright", "credits" or "license" for more information.
 >>>
 ```
@@ -232,19 +247,19 @@ $
 ```python
 >>> help()
 
-Welcome to Python 3.3!  This is the interactive help utility.
+Welcome to Python 3.4's help utility!
 
 If this is your first time using Python, you should definitely check out
-the tutorial on the Internet at http://docs.python.org/3.3/tutorial/.
+the tutorial on the Internet at http://docs.python.org/3.4/tutorial/.
 
 Enter the name of any module, keyword, or topic to get help on writing
 Python programs and using Python modules.  To quit this help utility and
 return to the interpreter, just type "quit".
 
-To get a list of available modules, keywords, or topics, type "modules",
-"keywords", or "topics".  Each module also comes with a one-line summary
-of what it does; to list the modules whose summaries contain a given word
-such as "spam", type "modules spam".
+To get a list of available modules, keywords, symbols, or topics, type
+"modules", "keywords", "symbols", or "topics".  Each module also comes
+with a one-line summary of what it does; to list the modules whose name
+or summary contain a given string such as "spam", type "modules spam".
 
 help>
 ```
@@ -255,10 +270,10 @@ help>
 Example 1/3: `help()` functions.
 ```python
 >>> help('if')
-The ``if`` statement
-********************
+The "if" statement
+******************
 
-The ``if`` statement is used for conditional execution:
+The "if" statement is used for conditional execution:
 
    if_stmt ::= "if" expression ":" suite
                ( "elif" expression ":" suite )*
@@ -267,12 +282,11 @@ The ``if`` statement is used for conditional execution:
 It selects exactly one of the suites by evaluating the expressions one
 by one until one is found to be true (see section *Boolean operations*
 for the definition of true and false); then that suite is executed
-(and no other part of the ``if`` statement is executed or evaluated).
-If all expressions are false, the suite of the ``else`` clause, if
+(and no other part of the "if" statement is executed or evaluated).
+If all expressions are false, the suite of the "else" clause, if
 present, is executed.
 
 Related help topics: TRUTHVALUE
-
 ```
 </section>
 <section data-markdown>
@@ -290,7 +304,6 @@ split(...)
     splits are done. If sep is not specified or is None, any
     whitespace string is a separator and empty strings are
     removed from the result.
-
 ```
 </section>
 <section data-markdown>
@@ -306,7 +319,6 @@ Example 3/3: `dir()` functions.
 '__setattr__', '__setitem__', '__sizeof__', '__str__', '__subclasshook__',
 'append', 'clear', 'copy', 'count', 'extend', 'index', 'insert', 'pop',
 'remove', 'reverse', 'sort']
-
 ```
 </section>
 </section>
@@ -490,7 +502,7 @@ Examples 2/5
 >>> a[3]            # 3
 >>> a[-1]           # 9
 >>> a[100]          # IndexError: list index out of range
->>> a[2:4]          # [2, 3]    Different from Perl!!!
+>>> a[2:4]          # [2, 3]
 
 >>> i = 3
 >>> a[i:i+5]        # [3, 4, 5, 6, 7]
@@ -531,7 +543,7 @@ Examples 4/5
 
 # More about tuple
 >>> (x, y) = (4, 5)     # x = 4 and y = 5
->>> x, y = 4, 5         # same
+>>> x, y = 4, 5         # same as above
 >>> x, y = y, x         # swap
 
 # Conversion
@@ -548,6 +560,9 @@ Examples 4/5
 <section data-markdown>
 ## Sequence Types - list, tuple
 Examples 5/5
+
+- list comprehension.
+
 ```python
 >>> a = [i for i in range(10)]
 >>> a
@@ -601,8 +616,8 @@ Examples 1/2
 >>> s.split()
 ['NA', 'is', 'very', 'interesting.']
 
->>> '  bsd  \n\n  '.strip()
-'bsd'
+>>> '  darkgerm  \n\n  '.strip()
+'darkgerm'
 
 >>> ', '.join('abc')
 'a, b, c'
@@ -652,7 +667,7 @@ http://docs.python.org/3/library/string.html#format-examples
 - Triple quoted: `b'''multi-line bytes'''`, `b"""same effect"""`
 - `bytes` is immutable (same as `str`)
 - The differences between `bytes` and `str` are:
-    - `str` is unicode, while `bytes` is raw character array.`
+    - `str` is unicode, while `bytes` is raw character array.
     - We can encode `str` to `bytes`.
     - We can decode `bytes` to `str`.
     - `str` to C++ `string`, as `bytes` to C++ `char[]`.
@@ -837,12 +852,12 @@ Example: open a file for read.
 >>> f = open('/etc/resolv.conf')
 >>> print(f.read())
 search cs.nctu.edu.tw
-nameserver 140.113.235.103
+nameserver 140.113.235.1
 nameserver 8.8.8.8
 nameserver 140.113.1.1
 
 >>> open('/etc/resolv.conf', 'r').readlines()
-['search cs.nctu.edu.tw\n', 'nameserver 140.113.235.103\n',
+['search cs.nctu.edu.tw\n', 'nameserver 140.113.235.1\n',
 'nameserver 8.8.8.8\n', 'nameserver 140.113.1.1\n']
 
 >>> f = open('/etc/resolv.conf', 'rb')
@@ -884,7 +899,11 @@ ALL : ALL : deny
 ```python
 # I am a comment.
 def add(a, b):
-    """add two number."""
+    """
+        :description: Add two number.
+        :args:        a, b.
+        :return:      sum of a and b.
+    """
     return a + b
 ```
 ----
@@ -894,7 +913,7 @@ http://legacy.python.org/dev/peps/pep-0008/#comments
 <section data-markdown>
 ## Python Syntax 2/2
 - Use `indentation` to delimit program blocks.
-    - `tab`, `any number of spaces`are OK, but only use one in a file.
+    - `tab`, `any number of spaces`are OK, but **only use one** in a file.
     - Suggestion: `4 spaces` (PEP8)
 
 ```python
@@ -917,8 +936,9 @@ http://en.wikipedia.org/wiki/Python_syntax_and_semantics#Indentation
 - `for` statement
 - `while` statement
 - `def` statement (functions)
+- `try`, `except`  statements
 - More control flows:
-    - `try`, `except`, `raise` statements
+    - `raise` statement
     - `with` statement
     - `lambda` expression
     - ...
@@ -952,7 +972,7 @@ http://docs.python.org/3/reference/compound_stmts.html#the-if-statement
 </section>
 
 <section data-markdown>
-## `for` statement 1/2
+## `for` statement 1/3
 `for` var `in` iterable_object`:` statement
 ```python
 for animal in ['cat', 'dog', 'fish', 'bird']:
@@ -965,12 +985,12 @@ fish
 bird
 '''
 
-for char in 'abcd':
+for char in 'NyanCat':
     print(char, end=' ')
 print()
 
 '''output:
-a b c d
+N y a n C a t
 '''
 ```
 ----
@@ -978,7 +998,7 @@ http://docs.python.org/3/reference/compound_stmts.html#for
 </section>
 
 <section data-markdown>
-## `for` statement
+## `for` statement 2/3
 Useful function for iteration: `range()`
 ```python
 '''
@@ -1003,6 +1023,29 @@ http://docs.python.org/3/library/functions.html#func-range
 </section>
 
 <section data-markdown>
+## `for` statement 3/3
+Nested for loop.
+```python
+for i in range(1, 10):
+    for j in range(1, 10):
+        print('{}*{} = {:&lt;2}'.format(i, j, i * j), end='  ')
+    print()
+
+'''output:
+1*1 = 1   1*2 = 2   1*3 = 3   1*4 = 4   1*5 = 5   1*6 = 6   1*7 = 7   1*8 = 8   1*9 = 9
+2*1 = 2   2*2 = 4   2*3 = 6   2*4 = 8   2*5 = 10  2*6 = 12  2*7 = 14  2*8 = 16  2*9 = 18
+3*1 = 3   3*2 = 6   3*3 = 9   3*4 = 12  3*5 = 15  3*6 = 18  3*7 = 21  3*8 = 24  3*9 = 27
+4*1 = 4   4*2 = 8   4*3 = 12  4*4 = 16  4*5 = 20  4*6 = 24  4*7 = 28  4*8 = 32  4*9 = 36
+5*1 = 5   5*2 = 10  5*3 = 15  5*4 = 20  5*5 = 25  5*6 = 30  5*7 = 35  5*8 = 40  5*9 = 45
+6*1 = 6   6*2 = 12  6*3 = 18  6*4 = 24  6*5 = 30  6*6 = 36  6*7 = 42  6*8 = 48  6*9 = 54
+7*1 = 7   7*2 = 14  7*3 = 21  7*4 = 28  7*5 = 35  7*6 = 42  7*7 = 49  7*8 = 56  7*9 = 63
+8*1 = 8   8*2 = 16  8*3 = 24  8*4 = 32  8*5 = 40  8*6 = 48  8*7 = 56  8*8 = 64  8*9 = 72
+9*1 = 9   9*2 = 18  9*3 = 27  9*4 = 36  9*5 = 45  9*6 = 54  9*7 = 63  9*8 = 72  9*9 = 81
+'''
+```
+</section>
+
+<section data-markdown>
 ## `while` statement
 `while` condition`:` statement
 ```python
@@ -1012,11 +1055,13 @@ step = 0
 n = int(input('give me a number: '))
 
 while n != 1:
-    if n % 2 == 0:  n //= 2
-    else:           n = 3 * n + 1
+    if n % 2 == 0:
+        n //= 2
+    else:
+        n = 3 * n + 1
     step += 1
 
-print('{} steps to 1.'.format(step))
+print('{} step(s) to 1.'.format(step))
 
 '''sample run
 $ python3 3n+1.py
@@ -1029,7 +1074,7 @@ http://docs.python.org/3/reference/compound_stmts.html#while
 </section>
 
 <section data-markdown>
-## `def` statement (functions) 1/2
+## `def` statement (functions) 1/3
 `def` function_name `(` argument_list `)` `:`
 ```python
 #!/usr/bin/env python3
@@ -1055,7 +1100,7 @@ http://docs.python.org/3/reference/compound_stmts.html#def
 </section>
 
 <section data-markdown>
-## `def` statement (functions) 2/2
+## `def` statement (functions) 2/3
 functions are objects.
 ```python
 #!/usr/bin/env python3
@@ -1079,6 +1124,151 @@ print(ppo2 == print_pow_of_2)   # True
 ```
 </section>
 
+<section>
+<section data-markdown>
+## `def` statement (functions) 3/3
+More about function arguments.
+
+- Default Argument Values
+- Keyword Arguments
+- Arbitrary Argument Lists (Next page)
+
+```python
+def pass_or_not(exams, bonus=0, special_case=None):
+    if special_case is not None: return special_case
+    return sum(exams)/len(exams) + bonus &gt;= 60
+
+pass_or_not([50, 60, 70])                   # True
+pass_or_not([50, 60])                       # False
+
+pass_or_not([50, 60], bonus=5)              # True
+pass_or_not([50, 60], 5)                    # True, same as above
+pass_or_not(bonus=5, exams=[50, 60])        # True, same as above
+
+pass_or_not([50, 60], special_case=True)            # True
+pass_or_not([90, 90], bonus=10, special_case=False) # False
+```
+----
+https://docs.python.org/3/tutorial/controlflow.html#more-on-defining-functions
+</section>
+<section data-markdown>
+## `def` statement (functions) 3/3
+More about function arguments: Arbitrary Argument Lists.
+```python
+def summation(*args):
+    '''An implementation of sum()'''
+    print(type(args))           # &lt;class 'tuple'&gt;
+    print(args)
+    ret = 0
+    for i in args:
+        ret += i
+    return ret
+
+print(summation(1, 2, 3))       # (1, 2, 3)  6
+print(summation(36, 45))        # (36, 45)  81
+```
+```python
+def foo(a, b, *args, **kwargs):
+    print('a={} b={} args={} kwargs={}'.format(a, b, args, kwargs))
+
+foo(1, 2)           # a=1 b=2 args=() kwargs={}
+foo(1, 2, 3)        # a=1 b=2 args=(3,) kwargs={}
+foo(1, 2, 3, x=9)   # a=1 b=2 args=(3,) kwargs={'x': 9}
+foo(1, 2, x=9, y=8) # a=1 b=2 args=() kwargs={'x': 9, 'y': 8}
+foo(1, 2, 8, 9)     # a=1 b=2 args=(8, 9) kwargs={}
+
+foo(1)  # TypeError: foo() missing 1 required positional argument: 'b'
+```
+</section>
+</section>
+
+<section>
+<section data-markdown>
+## `try`, `except` statement
+Handling Exceptions.
+```python
+try:
+    # do something may be dangerous.
+except Some_Errors_or_Exceptions:
+    # do things if Some_Errors_or_Exceptions happended.
+except:
+    # catch ALL exceptions.
+```
+----
+https://docs.python.org/3/tutorial/errors.html
+</section>
+<section data-markdown>
+## `try`, `except`, `raise` statement
+Example 1/3
+```python
+#!/usr/bin/env python3
+print('Welcome to Square Root Calculator(SRC)')
+while True:
+    try:
+        n = int(input('Please give me a number: '))
+        print('Square Root of {} = {}'.format(n, n**0.5))
+    except KeyboardInterrupt:
+        print('Goodbye! See you next time~')
+        break
+```
+```shell
+# sample run
+$ python3 SRC.py
+Welcome to Square Root Calculator(SRC)
+Please give me a number: 2
+Square Root of 2 = 1.4142135623730951
+Please give me a number: 3
+Square Root of 3 = 1.7320508075688772
+Please give me a number: 100
+Square Root of 100 = 10.0
+Please give me a number: ^C
+Goodbye! See you next time~
+$ 
+```
+</section>
+<section data-markdown>
+## `try`, `except`, `raise` statement
+Example 2/3
+
+What if a BAD user input some string?
+```shell
+$ python3 SRC.py
+Welcome to Square Root Calculator(SRC)
+Please give me a number: abc
+Traceback (most recent call last):
+  File "test.py", line 6, in &lt;module&gt;
+    n = int(input('Please give me a number: '))
+ValueError: invalid literal for int() with base 10: 'abc'
+```
+Use `except` to catch the `ValueError` exception.
+</section>
+<section data-markdown>
+## `try`, `except`, `raise` statement
+Example 3/3
+```python
+#!/usr/bin/env python3
+print('Welcome to Square Root Calculator(SRC)')
+while True:
+    try:
+        n = int(input('Please give me a number: '))
+        print('Square Root of {} = {}'.format(n, n**0.5))
+    except KeyboardInterrupt:
+        print('Goodbye! See you next time~')
+        break
+    except ValueError:
+        print("YOU ARE A BAD USER! I don't want to play with you!")
+        break
+```
+```shell
+# sample run
+$ python3 SRC.py
+Welcome to Square Root Calculator(SRC)
+Please give me a number: abc
+YOU ARE A BAD USER! I don't want to play with you!
+$
+```
+</section>
+</section>
 
 
 
@@ -1463,15 +1653,19 @@ print(os.name)      # 'posix'
 print(os.getuid())  # 14822
 print(os.getpid())  # 10215
 print(os.uname())
-# posix.uname_result(sysname='FreeBSD', nodename='bsd5.cs.nctu.edu.tw', release='9.1-RELEASE-p10',
-# version='FreeBSD 9.1-RELEASE-p10 #0: Sun Jan 12 20:11:23 UTC 2014  
-# root@amd64-builder.daemonology.net:/usr/obj/usr/src/sys/GENERIC', machine='amd64')
-
+'''posix.uname_result(sysname='FreeBSD', nodename='bsd5.cs.nctu.edu.tw',
+release='10.1-RELEASE-p5', version='FreeBSD 10.1-RELEASE-p5 #0: Tue Jan 27
+08:55:07 UTC 2015
+root@amd64-builder.daemonology.net:/usr/obj/usr/src/sys/GENERIC',
+machine='amd64')
+'''
 print(sys.argv)     # ['demo.py', 'arg1', 'adsf']
 print(sys.path)
-# ['/amd/cs/99/9917038', '/usr/local/lib/python33.zip',
-# '/usr/local/lib/python3.3', '/usr/local/lib/python3.3/plat-freebsd9',
-# '/usr/local/lib/python3.3/lib-dynload', '/usr/local/lib/python3.3/site-packages']
+'''['', '/usr/local/lib/python34.zip', '/usr/local/lib/python3.4',
+'/usr/local/lib/python3.4/plat-freebsd10',
+'/usr/local/lib/python3.4/lib-dynload',
+'/usr/local/lib/python3.4/site-packages']
+'''
 ```
 </section>
 </section>
@@ -1485,8 +1679,38 @@ print(sys.path)
 <section data-markdown>
 ## PyPI - the Python Package Index
 - https://pypi.python.org/pypi
+- The Python Package Index is a repository of software for the Python
+    programming language. There are currently 55938 packages here. (2015/3/5)
+
 - Use `pip` to install packages.
+    - `pip install &lt;package-name&gt;`
 - Import it and use!
+</section>
+
+<section data-markdown>
+## PyPI - the Python Package Index
+- Instead of install the package system-wide, I suggest you to install them
+    locally.
+- Use `venv` module (since 3.3) to create your own virtual environments.
+
+```shell
+$ VENV=venv
+
+# create virtual env.
+$ python3 -m venv $VENV
+
+# activate the environment.
+$ source $VENV/bin/activate
+
+# install pip.
+(venv)$ curl https://raw.githubusercontent.com/pypa/pip/master/contrib/get-pip.py | python
+
+# re-activate the environment to apply settings.
+(venv)$ deactivate
+$ source $VENV/bin/activate
+```
+----
+https://docs.python.org/3/library/venv.html
 </section>
 
 <section data-markdown>
@@ -1792,7 +2016,11 @@ def youtube_search(keyword, n=6):
     html = BeautifulSoup(content)
 
     base = 'http://www.youtube.com'
-    for link in html.find_all(href=re.compile("watch\?v=")):
+    all_links = html.find_all(
+        class_='yt-uix-tile-link',
+        href=re.compile("watch\?v="),
+    )
+    for link in all_links:
         if 'Watch Later' not in str(link):
             print(base + link.get('href'))
             print(link.text.strip())
@@ -1873,23 +2101,23 @@ optional arguments:
 Sample Run 2/2
 ```shell
 $ python3 youtube.py 五五六六
-http://www.youtube.com/watch?v=2NqXSYfL3as
-『56不能亡！』5566金曲2小時終極串燒！
-
-http://www.youtube.com/watch?v=wfezg0ThJyo
-5566-56不能亡最強串燒金曲
-
-http://www.youtube.com/watch?v=ixt-rNDkpTU
-5566 串燒歌曲 你們還記得嗎?
-
 http://www.youtube.com/watch?v=2Ii0kpKi8kI
 5566【MVP情人】我難過 MV
 
-http://www.youtube.com/watch?v=tb9jik2cwes
-20140101 TVBS 五月天vs.5566 高雄合體開唱
+http://www.youtube.com/watch?v=2NqXSYfL3as
+56不能亡！5566金曲2小時終極串燒！
 
-http://www.youtube.com/watch?v=Hqty0e-KiPE
-5566 - 存在
+http://www.youtube.com/watch?v=E974uH3cs9I
+台灣啟示錄5566
+
+http://www.youtube.com/watch?v=60HMLlYIXQA
+2015 02 19【超级巨星红白體能大讚】- 5566領軍陪你過新年
+
+http://www.youtube.com/watch?v=J4hvUELE-AU
+5566【2006 One World 同一個世界演唱會】
+
+http://www.youtube.com/watch?v=jjQ4lYKBC2U
+好久不见 5566
 ```
 </section>
 </section>

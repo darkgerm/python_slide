@@ -19,7 +19,11 @@ def youtube_search(keyword, n=6):
     html = BeautifulSoup(content)
     
     base = 'http://www.youtube.com'
-    for link in html.find_all(href=re.compile("watch\?v=")):
+    all_links = html.find_all(
+        class_='yt-uix-tile-link',
+        href=re.compile("watch\?v="),
+    )
+    for link in all_links:
         if 'Watch Later' not in str(link):
             print(base + link.get('href'))
             print(link.text.strip())
